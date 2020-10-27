@@ -1,0 +1,42 @@
+function clickStar() {
+  const starDiv = document.querySelector('.star');
+  if (starDiv) {
+    starDiv.addEventListener('click', () => {
+      document.querySelector('.suite-list .active i').classList.toggle('selected');
+      console.log(starDiv)
+      starDiv.firstElementChild.classList.toggle('d-none');
+      starDiv.lastElementChild.classList.toggle('d-none');
+    })
+  }
+}
+
+
+// import clickStar from '../../../javascript/star'
+
+// function changeSuite() {
+//   const allSuiteTabs = document.querySelectorAll('.suite-list th a');
+//   if (allSuiteTabs.length > 0) {
+//     allSuiteTabs.forEach((suiteTab) => {
+//       suiteTab.addEventListener('click', () => {
+var suiteContainer = document.querySelector('.suite-container.active');
+var previousActiveSuiteTab = document.querySelector('.suite-list .active');
+// change Tabs
+// previousActiveSuiteTab.classList.toggle('active');
+// suiteTab.classList.toggle('active');
+// change Suite Container Content
+var nextSuiteName =  "<%= @suite['suite_name'] %>";
+suiteContainer.innerHTML = `<%= j render 'pages/suite_info', suite_hash: @suite %>`;
+if (document.querySelector('.suite-list .active i').classList.contains('selected')) {
+  suiteContainer.querySelector('.star').firstElementChild.classList.toggle('d-none');
+  suiteContainer.querySelector('.star').lastElementChild.classList.toggle('d-none');
+}
+
+// change Book button
+var bookButton = document.querySelector('.suite-information-wrapper .book-button');
+bookButton.querySelector('.name').innerText = `${nextSuiteName}`;
+var bookingLink = "<%= @suite['booking_link'] %>".replaceAll('amp;', '');
+bookButton.href = "<%= @suite['booking_link'] %>".replaceAll('amp;', '');
+
+
+
+clickStar();

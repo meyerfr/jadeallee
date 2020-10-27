@@ -1,0 +1,57 @@
+<!-- <div class="navbar">
+  <ul class="navbar-nav">
+    <li class="nav-item active">
+      <%#= link_to 'Home', '#', class: 'nav-item' %>
+    </li>
+    <li class="nav-item">
+      <%#= link_to 'Gallerie', '#', class: 'nav-item' %>
+    </li>
+  </ul>
+</div> -->
+<div class="banner">
+<!--   <video width="100%" height="240" autoplay loop muted playsinline>
+    <source src="stockVideo.mov" type="video/mov" />
+  </video> -->
+  <%= image_tag 'https://res.cloudinary.com/dinf0oml5/image/upload/v1603790862/Hausansicht/IMG_5661_ckoebv_tlig4f.jpg' %>
+  <%#= video_tag "recording.mov", controls: false, autobuffer: true, autoplay: true, loop: true, muted: true, id: 'myVideo' %>
+  <h2 id="main-header">Finde deine perfekte Ferienwohnung an der Nordsee</h2>
+</div>
+<div class="container">
+  <div class="row">
+    <h3 class="header">Ihre Ferienwohnung in Wilhelmshaven am Südstrand</h3>
+    <div class="content">
+      <span>
+        Sie suchen die perfekte Wohnung mit der perfekten Lage?
+        Machen Sie ihrer Suche ein Ende und ziehen Sie ein!
+        Unsere 2020 fertigestellten Wohnungen befinden sich direkt an der Nordsee, dem Großen Hafen und am Banter See,
+        Die Lage in kombination mit dem modernem und gemütlich-gehobenem Wohnstandard bieten die perfekte Vorrausetzung für einen Urlaub zum Entspannen und Wohlfühlen.
+      </span>
+      <%= image_tag 'https://res.cloudinary.com/dinf0oml5/image/upload/v1603790307/Hausansicht/IMG_1038_cleref_a3xsgl.jpg' %>
+    </div>
+  </div>
+  <div class="row">
+    <h3 class="header">Ferienwohnung in bester Laage Jadeallee 100</h3>
+    <div class="content">
+      <%= image_tag 'https://res.cloudinary.com/dinf0oml5/image/upload/v1601975453/Stimmung/70142551-7a35-40be-b39f-0634cf800da5_cxrlxi.jpg' %>
+      <span>
+        Ihre Wohnung ist in unmittelbarer Nähe zum Südstrand am Jadebusen und zum Banter See. Sehr kurze Wege zum Strand und in die Innenstadt von Wilhelmshaven. Zahlreiche Restaurants und ein großes Freizeitangebot befinden sich in fußläufiger Nähe: das Veranstaltungszentrum Pumpwerk, tolle Restaurants und Kneipen zum drinnen und draußen sitzen sowie das sehenswerte Marinemuseum, das Aquarium, das Wattenmeerhaus und das Küstenmuseum. Die größte Attraktion ist aber sicher die Nähe zur Nordsee und zum Banter See. Hier können Sie schwimmen, segeln, surfen, Radfahren und ausgiebig spazieren gehen. Schwimmen in der Nordsee bei Hochwasser oder tideunabhängig im Banter See (Süßwasser) – beide Möglichkeiten haben Sie unmittelbar vor der Haustür!.
+      </span>
+    </div>
+  </div>
+  <div class="row suite-information-wrapper">
+    <h3 class="header">
+      Suchen Sie sich Ihre perfekte Ferienwohnung aus
+    </h3>
+    <table class="suite-list">
+      <% @suite_names.each_with_index do |suite_name, idx| %>
+        <th class="<%= 'active' if idx == 0%>"><%= link_to suite_name, show_path(suite_name: suite_name), remote: true %><i>★</i></th>
+      <% end %>
+    </table>
+    <div class="suite-container active">
+      <%= render 'suite_info', suite_hash: @suite, idx: 0 %>
+    </div>
+    <%= link_to @suite['booking_link'], :class=> "book-button", target: '_blank' do %>
+      <span class="name"><%= @suite['suite_name'] %></span> Buchen
+    <% end %>
+  </div>
+</div>

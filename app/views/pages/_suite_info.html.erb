@@ -1,0 +1,68 @@
+<!-- <div class="suite-container active" id="<%#= suite_hash['suite_name'].downcase %>"> -->
+  <div class="suite-photos">
+    <% suite_hash['photos'][0...6].each do |photo| %>
+      <a href="<%= photo %>" data-lightbox="lightbox_room_show_<%= suite_hash['suite_name'] %>" data-title="<%= suite_hash['suite_name'] %> Fotos">
+        <%= image_tag photo %>
+      </a>
+    <% end %>
+  </div>
+  <div class="suite-information-container">
+    <div class="suite-main-info">
+      <div class="suite-name">
+        <h3><%= suite_hash['suite_name'] %></h3>
+        <div class="star">
+          <span class="not-clicked">☆</span>
+          <span class="clicked d-none">★</span>
+        </div>
+      </div>
+      <span class="subheader no-margin">Größe</span>
+      <span><%= suite_hash['size'] %> m<sup>2</sup></span>
+      <span class="subheader">Ausstattung</span>
+      <span><%= suite_hash['beds'] %></span>
+      <span><%= suite_hash['rooms'] %></span>
+      <span><%= suite_hash['max_people'] %></span>
+      <span><%= suite_hash['baths'] %></span>
+      <span><%= suite_hash['balconies'] %></span>
+      <% if suite_hash['wash'] %>
+        <span><%= suite_hash['wash'] %></span>
+      <% end %>
+      <span class="subheader">Blickrichtung</span>
+      <span><%= suite_hash['view'] %></span>
+      <% if suite_hash['pets'] %>
+        <span class="subheader">Weiteres</span>
+        <span>1 Hund</span>
+      <% end %>
+      <!-- <span class="subheader">Preis</span> -->
+      <div class="priceheader">
+        <span class="subheader">Preis</span>
+        <div class="info">
+          <i class="fas fa-info-circle"></i>
+          <span class="info-content">
+            Preise gelten für 1-2 Personen. Für jede weitere Person + 10€ pro Nacht.
+          </span>
+        </div>
+      </div>
+      <span class="subheader no-margin">Hauptsaison</span>
+      <span><%= suite_hash['prices']['hauptsaison'] %>€ pro Nacht</span>
+      <span class="subheader no-margin">Mittelsaison</span>
+      <span><%= suite_hash['prices']['mittelsaison'] %>€ pro Nacht</span>
+      <span class="subheader no-margin">Nebensaison</span>
+      <span><%= suite_hash['prices']['nebensaison'] %>€ pro Nacht</span>
+
+      <%= image_tag suite_hash['island_photo'], class: 'island-photo' %>
+    </div>
+    <div class="suite-content">
+      <span>
+        <% suite_hash['first_text'].to_s.split('\n').each do |text| %>
+          <p><%= text %></p>
+        <% end %>
+      </span>
+      <span>
+        <% suite_hash['second_text'].to_s.split('\n').each do |text| %>
+          <p><%= text %></p>
+        <% end %>
+      </span>
+    </div>
+  </div>
+
+<!-- </div> -->
